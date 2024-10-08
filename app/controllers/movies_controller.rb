@@ -1,4 +1,9 @@
 class MoviesController < ApplicationController
+
+  def new
+    render template: "movies/new"
+  end
+
   def index
     matching_movies = Movie.all
 
@@ -49,7 +54,7 @@ class MoviesController < ApplicationController
 
   def destroy
     the_id = params.fetch("id")
-    the_movie = Movie.where({ :id => the_id }).[0]
+    the_movie = Movie.where({ :id => the_id }).first
 
     the_movie.destroy
 
